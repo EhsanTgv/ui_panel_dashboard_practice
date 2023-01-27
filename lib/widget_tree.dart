@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:ui_panel_dashboard_practice/drawer/drawer_page.dart';
+import 'package:ui_panel_dashboard_practice/panel_center/panel_center_page.dart';
+import 'package:ui_panel_dashboard_practice/panel_left/panel_left_page.dart';
+import 'package:ui_panel_dashboard_practice/panel_right_page/panel_right_page.dart';
 import 'package:ui_panel_dashboard_practice/responsive_layout.dart';
 
 class WidgetTree extends StatefulWidget {
@@ -21,11 +25,30 @@ class _WidgetTreeState extends State<WidgetTree> {
       ),
       body: ResponsiveLayout(
         tiny: Container(),
-        phone: Container(),
-        tablet: Container(),
-        largeTablet: Container(),
-        computer: Container(),
+        phone: const PanelCenterPage(),
+        tablet: Row(
+          children: const [
+            Expanded(child: PanelLeftPage()),
+            Expanded(child: PanelCenterPage()),
+          ],
+        ),
+        largeTablet: Row(
+          children: const [
+            Expanded(child: PanelLeftPage()),
+            Expanded(child: PanelCenterPage()),
+            Expanded(child: PanelRightPage()),
+          ],
+        ),
+        computer: Row(
+          children: const [
+            Expanded(child: DrawerPage()),
+            Expanded(child: PanelLeftPage()),
+            Expanded(child: PanelCenterPage()),
+            Expanded(child: PanelRightPage()),
+          ],
+        ),
       ),
+      drawer: const DrawerPage(),
     );
   }
 }
