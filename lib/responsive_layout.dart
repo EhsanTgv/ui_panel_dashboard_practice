@@ -19,7 +19,7 @@ class ResponsiveLayout extends StatelessWidget {
   static const int tinyLimit = 270;
   static const int phoneLimit = 550;
   static const int tabletLimit = 800;
-  static const int largeTabletLimit = 1100;
+  static const int largeTabletLimit = 1000;
 
   static bool isTinyHeightLimit(BuildContext context) =>
       MediaQuery.of(context).size.height < tinyHeightLimit;
